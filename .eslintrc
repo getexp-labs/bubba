@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "@antfu"
+  ],
+  "rules": {
+    "no-console": "off",
+    "stylelint/no-empty-source": "off",
+    "vue/component-tags-order": ["error", {
+      "order": [ "style", "template", "script" ]
+    }],
+    "curly": "off",
+    "no-use-before-define": "off"
+  }
+}
