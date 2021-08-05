@@ -117,7 +117,7 @@ const state = reactive({
   pultShow: true,
   videoShow: false,
   screenshotSrc: '',
-  screenshotText: 'New text',
+  screenshotText: '',
   screenshotTextTopPosition: 0,
 })
 
@@ -210,7 +210,7 @@ const videoScreenshot = () => {
   const ctx = canvas.getContext('2d')
   ctx.drawImage(refVideo.value, 0, 0, canvas.width, canvas.height)
   state.screenshotSrc = canvas.toDataURL('image/jpeg')
-  state.screenshotText = 'booba'
+  state.screenshotText = ''
 
   const videoHeight = 500 * refVideo.value.videoHeight / refVideo.value.videoWidth
   state.screenshotTextTopPosition = videoHeight - 50
