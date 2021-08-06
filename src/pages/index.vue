@@ -55,7 +55,7 @@ div(ref="refWrapper").wrapper
         ).h-full.bg-white
   video(
     ref="refVideo"
-    src="/video-0.mp4"
+    :src="videoUrl"
     :autoplay="true"
     :style=`{
       opacity: state.videoShow ? 1 : 0,
@@ -70,7 +70,9 @@ div(ref="refWrapper").wrapper
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
 import { onKeyStroke, useWindowSize } from '@vueuse/core'
+import { useAuth } from '~/use/auth'
 
+const { state: stateAuth } = useAuth()
 const route = useRoute()
 const router = useRouter()
 const { width, height } = useWindowSize()
@@ -83,7 +85,10 @@ const state = reactive({
   videoShow: false,
   screenshotSrc: null,
 })
-
+const videoUrl = computed(() => {
+  return `${import.meta.env.VITE_SUPABASE_STORAGE_PUBLIC}/content/video-0.mp4`
+})
+console.log('stateAuth', stateAuth)
 const videoSetQuery = (start, end) => {
   console.log('videoSetQuery', start, end)
   refVideo.value.currentTime = start
