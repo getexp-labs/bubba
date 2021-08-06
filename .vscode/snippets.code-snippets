@@ -1,0 +1,52 @@
+{
+	"New component": {
+		"scope": "vue",
+		"prefix": "com",
+		"body": [
+			"<style lang=\"scss\" scoped>",
+			"</style>",
+			"",
+			"<template lang=\"pug\">",
+			"</template>",
+			"",
+			"<script setup lang=\"ts\">",
+			"$0",
+			"</script>",
+			""
+		]
+	},
+	"Watch": {
+		"scope": "vue",
+		"prefix": "wat",
+		"body": [
+			"watch(",
+			"  $1",
+			"  (to, from) => {",
+			"    console.log('watch $1',to, from)",
+			"    $0",
+			"  },",
+			"  {",
+			"    immediate: $2,",
+			"  },",
+			")"
+		],
+	},
+	"Store": {
+		"scope": "ts,js",
+		"prefix": "stor",
+		"body": [
+			"import { defineStore } from 'pinia'",
+			"",
+			"export const useStore$1 = defineStore({",
+			"  id: '$1',",
+			"  state: () => ({",
+			"  $0",
+			"  }),",
+			"  getters: {",
+			"  },",
+			"  actions: {",
+			"  },",
+			"})",
+		]
+	}
+}
