@@ -9,6 +9,7 @@ declare module 'vue' {
     CarbonLogoGithub: typeof import('virtual:vite-icons/carbon/logo-github')['default']
     CarbonMoon: typeof import('virtual:vite-icons/carbon/moon')['default']
     CarbonPedestrian: typeof import('virtual:vite-icons/carbon/pedestrian')['default']
+    CarbonSave: typeof import('virtual:vite-icons/carbon/save')['default']
     CarbonSun: typeof import('virtual:vite-icons/carbon/sun')['default']
     CarbonWarning: typeof import('virtual:vite-icons/carbon/warning')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']

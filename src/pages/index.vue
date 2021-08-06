@@ -16,6 +16,38 @@
     top: 0px;
     right: 0px;
     width: 500px;
+    input {
+      position: absolute;
+      left: 30%;
+      width: 40%;
+      background: rgba(90,90,90, 0.8);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+      font-size: 160%;
+      font-style: normal;
+      font-variant: normal;
+      font-weight: 700;
+      padding: 0 0.5em;
+      text-align: center;
+      &:focus {
+        border: none;
+        outline: 0;
+      }
+    }
+    .save-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: white;
+    padding: 8px;
+    background: rgba(90, 90, 90, 0.8);
+    border-radius: 50%;
+    margin: 8px;
+    width: 40px;
+    height: 40px;
+    }
   }
 }
 </style>
@@ -28,6 +60,9 @@ div(ref="refWrapper").wrapper
       :src="state.screenshotSrc"
       :style="{objectFit: 'contain'}"
     )
+    input(name="screenshotSign" type="text" :value="state.screenshotText" placeholder="HAHA, meme" :style="{top: `${state.screenshotTextTopPosition}px`}")
+    button(@click="memeSave").save-button
+      CarbonSave
   //- menu
   //- pult
   div(v-if="state.pultShow").pult
@@ -83,7 +118,9 @@ const state = reactive({
   currentTime: 0,
   pultShow: true,
   videoShow: false,
-  screenshotSrc: null,
+  screenshotSrc: '',
+  screenshotText: '',
+  screenshotTextTopPosition: 0,
 })
 const videoUrl = computed(() => {
   return `${import.meta.env.VITE_SUPABASE_STORAGE_PUBLIC}/content/video-0.mp4`
@@ -110,6 +147,12 @@ watch(
     videoSetQuery(to, from)
   },
 )
+
+const memeSave = () => {
+  console.log('[memeSave]')
+  // supabase.save(state.screenshotSrc, state.screenshotText);
+}
+
 const videoClick = (e: MouseEvent) => {
   console.log('[videoClick]')
   // console.log('videoClick', e)
@@ -172,6 +215,10 @@ const videoScreenshot = () => {
   const ctx = canvas.getContext('2d')
   ctx.drawImage(refVideo.value, 0, 0, canvas.width, canvas.height)
   state.screenshotSrc = canvas.toDataURL('image/jpeg')
+  state.screenshotText = ''
+
+  const videoHeight = 500 * refVideo.value.videoHeight / refVideo.value.videoWidth
+  state.screenshotTextTopPosition = videoHeight - 50
 }
 </script>
 
