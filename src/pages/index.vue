@@ -60,7 +60,7 @@ div(ref="refWrapper").wrapper
       :src="state.screenshotSrc"
       :style="{objectFit: 'contain'}"
     )
-    input(name="screenshotSign" type="text" :value="state.screenshotText" placeholder="HAHA, meme" :style="{top: `${state.screenshotTextTopPosition}px`}")
+    input(name="screenshotSign" type="text" v-model="state.screenshotText" placeholder="HAHA, meme" :style="{top: `${state.screenshotTextTopPosition}px`}")
     button(@click="memeSave").save-button
       CarbonSave
   //- menu
@@ -90,6 +90,7 @@ div(ref="refWrapper").wrapper
         ).h-full.bg-white
   video(
     ref="refVideo"
+    crossorigin="anonymous"
     :src="videoUrl"
     :autoplay="true"
     :style=`{
