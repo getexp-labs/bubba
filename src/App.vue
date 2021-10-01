@@ -7,13 +7,23 @@
 <template lang="pug">
 router-view
 </template>
+
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
 
 useHead({
-  title: 'Supa Bubba Base',
+  title: 'bubba',
   meta: [
-    { name: 'description', content: 'When you click you BAM' },
+    { name: 'description', content: 'guboshlep' },
   ],
 })
+
+const logger = (id) => {
+  return {
+    log(...msg) {
+      console.log(`[${id}]`, ...msg)
+    },
+  }
+}
+provide('logger', logger)
 </script>

@@ -65,7 +65,7 @@ div(ref="refWrapper").wrapper
       CarbonSave
   //- menu
   //- pult
-  div(v-if="state.pultShow").pult
+  //- div(v-if="state.pultShow").pult
     div(
       :style=`{maxWidth: '800px', height: '100px', borderRadius: '0px',}`
       @click="timelineClick"
@@ -88,10 +88,13 @@ div(ref="refWrapper").wrapper
           borderRadius: '0px', zIndex: 100,
         }`
         ).h-full.bg-white
-  video(
+  VideoPlayer(
+    :src="'/video-0.mp4'")
+    VideoCropper()
+  //- video(
     ref="refVideo"
     crossorigin="anonymous"
-    :src="videoUrl"
+    :src="'video-0.mp4'"
     :autoplay="true"
     :style=`{
       opacity: state.videoShow ? 1 : 0,
@@ -99,8 +102,7 @@ div(ref="refWrapper").wrapper
     @click="videoClick"
     @loadeddata="videoLoadeddata"
     @timeupdate="videoTimeupdate"
-    @seeked="videoSeeked"
-  )
+    @seeked="videoSeeked")
 </template>
 
 <script setup lang="ts">
